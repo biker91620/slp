@@ -54,7 +54,6 @@ class Request
 	*/
 	public function __construct()
 	{
-		//print_r($_SERVER);
 		$this->method = $_SERVER['REQUEST_METHOD'];
 		$this->base = @$_SERVER['BASE'];
 		$uri = $this->base ? str_replace($this->base, "", $_SERVER['REQUEST_URI']) : $_SERVER['REQUEST_URI'];
@@ -67,7 +66,7 @@ class Request
 		$this->request = $_REQUEST;
 		$this->time = $_SERVER['REQUEST_TIME'];
 		$this->remote = $_SERVER['REMOTE_ADDR'];
-		$this->paths = explode('/', substr($this->uri, 1));
+		$this->paths = array_filter(explode('/', substr($this->uri, 1)), 'strlen');
 	}
 	
 	/**

@@ -1,0 +1,19 @@
+{% extends '::Default:base' %}
+
+{% block content %}
+	<div class="message">
+		{{ error.getMessage() }}
+	</div>
+	<div class="debug">
+		{% for key, trace in error.getTrace() %}
+    		<div class="stack">
+    			<div class="number">#{{key}}</div>
+				<div class="file">File => {{trace['file']}}</div>
+				<div class="line">Line => {{trace.line }}</div>
+				<div class="call">Call => {{trace['class']}}{{trace.type}}{{trace['function']}}</div>
+				<div class="args">Arguments => {{ trace.args|join(' => ') }}</div>
+    		</div>
+		{% endfor %}
+	</div>
+{% endblock %}
+     

@@ -45,18 +45,21 @@ class Kernel
 	*/
 	public function exceptionHandler($e)
 	{
-		$this->container->get('view')->error(404, $e);	
+		$this->container->get('view')->exception($e);	
 	}
+	
 	/**
 	* @brief init Kernel
 	*/
 	private function init()
 	{
+		$this->container->addService("view", new View());
+		set_exception_handler(array($this, "exceptionHandler"));
+		//set_error_handler(array($this, "errorHandler"));
 		$this->container->addService("router", new Router());
 		$this->container->addService("request", new Request());	
 		$this->container->addService("config", new Config());
-		$this->container->addService("view", new View());
-		set_exception_handler(array($this, "exceptionHandler"));
+		$this->container->addService("asset", new Asset());
 	}
 	
 	/**
@@ -64,7 +67,7 @@ class Kernel
 	*/
 	private function loadModules()
 	{
-		$modules = require_once __DIR__.'/../../app/AppModules.php';
+		$modules = require SLP_WEBROOT.'/../app/AppModules.php';
 		foreach ($modules as $module)
 			$module->load();
 	}

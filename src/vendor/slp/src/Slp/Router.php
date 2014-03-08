@@ -41,6 +41,9 @@ class Router
 		$parameterCountknow = isset($route['parameters']) ? count($route['parameters']) : 0;
 		if ($parameterCountknow != $parameterCount)
 			throw new \Exception("Controller \"".$class."::".$method."\" requires $parameterCount parameters but $parameterCountknow are set");
+		$requestCount = count(array_values($this->container->get('request')->paths));
+		if ($parameterCount != $requestCount)
+			throw new \Exception("Controller \"".$class."::".$method."\" requires $parameterCount parameters but $requestCount are set");
 		$avaibleMethods = get_class_methods($route['controller']);
 		if (!in_array($method, $avaibleMethods))
 			throw new \Exception("Malformed route $path: controller has no method name ".$method);
@@ -85,6 +88,8 @@ class Router
 	*/
 	public function checkRoute($path, $route, &$args)
 	{
+		if ($this->container->get('request')->uri == $path)
+			return true;
 		$currentPaths = $this->container->get('request')->paths;
 		$path = substr($path, 1);
 		$testPaths = explode("/", $path);
