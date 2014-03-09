@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>SLP Framework</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">SLP Framework</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Munee.html">\Munee</a></li>
+                                                        <li><a href="../namespaces/Assetic.html">\Assetic</a></li>
+                                                        <li><a href="../namespaces/Slp.html">\Slp</a></li>
+                                                        <li><a href="../namespaces/Mpe.html">\Mpe</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">1789</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">5</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-888469642"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-888469642" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-966683865"></a>
+                                <a href="../namespaces/Munee.html" style="margin-left: 30px; padding-left: 0">Munee</a>
+            </div>
+            <div id="namespace-966683865" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1368144903"></a>
+                                <a href="../namespaces/Munee.Asset.html" style="margin-left: 30px; padding-left: 0">Asset</a>
+            </div>
+            <div id="namespace-1368144903" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2069800451"></a>
+                                <a href="../namespaces/Munee.Asset.Type.html" style="margin-left: 30px; padding-left: 0">Type</a>
+            </div>
+            <div id="namespace-2069800451" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Asset.Type.Css.html">Css</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Type.Image.html">Image</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Type.JavaScript.html">JavaScript</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Type.CompilationException.html">CompilationException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1368519807"></a>
+                                <a href="../namespaces/Munee.Asset.Filter.html" style="margin-left: 30px; padding-left: 0">Filter</a>
+            </div>
+            <div id="namespace-1368519807" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1499419383"></a>
+                                <a href="../namespaces/Munee.Asset.Filter.Image.html" style="margin-left: 30px; padding-left: 0">Image</a>
+            </div>
+            <div id="namespace-1499419383" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.Image.Colorize.html">Colorize</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.Image.Resize.html">Resize</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.Image.Negative.html">Negative</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.Image.Grayscale.html">Grayscale</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-263210944"></a>
+                                <a href="../namespaces/Munee.Asset.Filter.JavaScript.html" style="margin-left: 30px; padding-left: 0">JavaScript</a>
+            </div>
+            <div id="namespace-263210944" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.JavaScript.Minify.html">Minify</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.JavaScript.Packer.html">Packer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1857088761"></a>
+                                <a href="../namespaces/Munee.Asset.Filter.Css.html" style="margin-left: 30px; padding-left: 0">Css</a>
+            </div>
+            <div id="namespace-1857088761" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.Css.Minify.html">Minify</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Asset.Type.html">Type</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Filter.html">Filter</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.NotFoundException.html">NotFoundException</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.HeaderSetter.html">HeaderSetter</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Asset.Registry.html">Registry</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1457521723"></a>
+                                <a href="../namespaces/Munee.Cases.html" style="margin-left: 30px; padding-left: 0">Cases</a>
+            </div>
+            <div id="namespace-1457521723" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1619725369"></a>
+                                <a href="../namespaces/Munee.Cases.Asset.html" style="margin-left: 30px; padding-left: 0">Asset</a>
+            </div>
+            <div id="namespace-1619725369" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Cases.Asset.RegistryTest.html">RegistryTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Cases.RequestTest.html">RequestTest</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Cases.UtilsTest.html">UtilsTest</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Cases.ResponseTest.html">ResponseTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-144212885"></a>
+                                <a href="../namespaces/Munee.Mocks.html" style="margin-left: 30px; padding-left: 0">Mocks</a>
+            </div>
+            <div id="namespace-144212885" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Mocks.MockRequest.html">MockRequest</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Mocks.MockAssetType.html">MockAssetType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Munee.Response.html">Response</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Utils.html">Utils</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Dispatcher.html">Dispatcher</a></li>
+                                                    <li class="class"><a href="../classes/Munee.ErrorException.html">ErrorException</a></li>
+                                                    <li class="class"><a href="../classes/Munee.Request.html">Request</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-232916485"></a>
+                                <a href="../namespaces/Assetic.html" style="margin-left: 30px; padding-left: 0">Assetic</a>
+            </div>
+            <div id="namespace-232916485" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-235496890"></a>
+                                <a href="../namespaces/Assetic.Util.html" style="margin-left: 30px; padding-left: 0">Util</a>
+            </div>
+            <div id="namespace-235496890" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Util.VarUtils.html">VarUtils</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Util.TraversableString.html">TraversableString</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Util.CssUtils.html">CssUtils</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Util.LessUtils.html">LessUtils</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2127134356"></a>
+                                <a href="../namespaces/Assetic.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-2127134356" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Exception.Exception.html">Exception</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Exception.FilterException.html">FilterException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-194298482"></a>
+                                <a href="../namespaces/Assetic.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-194298482" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Cache.CacheInterface.html">CacheInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Cache.FilesystemCache.html">FilesystemCache</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Cache.ConfigCache.html">ConfigCache</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Cache.ApcCache.html">ApcCache</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Cache.ArrayCache.html">ArrayCache</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Cache.ExpiringCache.html">ExpiringCache</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1702611690"></a>
+                                <a href="../namespaces/Assetic.Factory.html" style="margin-left: 30px; padding-left: 0">Factory</a>
+            </div>
+            <div id="namespace-1702611690" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1363244934"></a>
+                                <a href="../namespaces/Assetic.Factory.Worker.html" style="margin-left: 30px; padding-left: 0">Worker</a>
+            </div>
+            <div id="namespace-1363244934" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Factory.Worker.WorkerInterface.html">WorkerInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Factory.Worker.CacheBustingWorker.html">CacheBustingWorker</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Worker.EnsureFilterWorker.html">EnsureFilterWorker</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-739848639"></a>
+                                <a href="../namespaces/Assetic.Factory.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
+            </div>
+            <div id="namespace-739848639" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Factory.Resource.IteratorResourceInterface.html">IteratorResourceInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Assetic.Factory.Resource.ResourceInterface.html">ResourceInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Factory.Resource.FileResource.html">FileResource</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Resource.DirectoryResource.html">DirectoryResource</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Resource.DirectoryResourceIterator.html">DirectoryResourceIterator</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Resource.DirectoryResourceFilterIterator.html">DirectoryResourceFilterIterator</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Resource.CoalescingDirectoryResource.html">CoalescingDirectoryResource</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1007030137"></a>
+                                <a href="../namespaces/Assetic.Factory.Loader.html" style="margin-left: 30px; padding-left: 0">Loader</a>
+            </div>
+            <div id="namespace-1007030137" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Factory.Loader.FormulaLoaderInterface.html">FormulaLoaderInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Factory.Loader.FunctionCallsFormulaLoader.html">FunctionCallsFormulaLoader</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Loader.BasePhpFormulaLoader.html">BasePhpFormulaLoader</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.Loader.CachedFormulaLoader.html">CachedFormulaLoader</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Factory.AssetFactory.html">AssetFactory</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Factory.LazyAssetManager.html">LazyAssetManager</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2050990096"></a>
+                                <a href="../namespaces/Assetic.Asset.html" style="margin-left: 30px; padding-left: 0">Asset</a>
+            </div>
+            <div id="namespace-2050990096" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1698512323"></a>
+                                <a href="../namespaces/Assetic.Asset.Iterator.html" style="margin-left: 30px; padding-left: 0">Iterator</a>
+            </div>
+            <div id="namespace-1698512323" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Asset.Iterator.AssetCollectionFilterIterator.html">AssetCollectionFilterIterator</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.Iterator.AssetCollectionIterator.html">AssetCollectionIterator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Asset.AssetInterface.html">AssetInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Assetic.Asset.AssetCollectionInterface.html">AssetCollectionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Asset.HttpAsset.html">HttpAsset</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.AssetReference.html">AssetReference</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.AssetCollection.html">AssetCollection</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.FileAsset.html">FileAsset</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.StringAsset.html">StringAsset</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.AssetCache.html">AssetCache</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.GlobAsset.html">GlobAsset</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Asset.BaseAsset.html">BaseAsset</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1603483066"></a>
+                                <a href="../namespaces/Assetic.Filter.html" style="margin-left: 30px; padding-left: 0">Filter</a>
+            </div>
+            <div id="namespace-1603483066" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-141636714"></a>
+                                <a href="../namespaces/Assetic.Filter.Yui.html" style="margin-left: 30px; padding-left: 0">Yui</a>
+            </div>
+            <div id="namespace-141636714" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Filter.Yui.JsCompressorFilter.html">JsCompressorFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.Yui.BaseCompressorFilter.html">BaseCompressorFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.Yui.CssCompressorFilter.html">CssCompressorFilter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1447996237"></a>
+                                <a href="../namespaces/Assetic.Filter.GoogleClosure.html" style="margin-left: 30px; padding-left: 0">GoogleClosure</a>
+            </div>
+            <div id="namespace-1447996237" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Filter.GoogleClosure.CompilerApiFilter.html">CompilerApiFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.GoogleClosure.BaseCompilerFilter.html">BaseCompilerFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.GoogleClosure.CompilerJarFilter.html">CompilerJarFilter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-986178049"></a>
+                                <a href="../namespaces/Assetic.Filter.Sass.html" style="margin-left: 30px; padding-left: 0">Sass</a>
+            </div>
+            <div id="namespace-986178049" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Filter.Sass.ScssFilter.html">ScssFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.Sass.SassFilter.html">SassFilter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.Filter.HashableInterface.html">HashableInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Assetic.Filter.DependencyExtractorInterface.html">DependencyExtractorInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Assetic.Filter.FilterInterface.html">FilterInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Filter.CssRewriteFilter.html">CssRewriteFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.UglifyCssFilter.html">UglifyCssFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.RooleFilter.html">RooleFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.StylusFilter.html">StylusFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.CssMinFilter.html">CssMinFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.JSMinPlusFilter.html">JSMinPlusFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.EmberPrecompileFilter.html">EmberPrecompileFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.UglifyJs2Filter.html">UglifyJs2Filter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.JpegoptimFilter.html">JpegoptimFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.PackagerFilter.html">PackagerFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.CallablesFilter.html">CallablesFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.PhpCssEmbedFilter.html">PhpCssEmbedFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.JSMinFilter.html">JSMinFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.TypeScriptFilter.html">TypeScriptFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.PngoutFilter.html">PngoutFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.DartFilter.html">DartFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.OptiPngFilter.html">OptiPngFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.FilterCollection.html">FilterCollection</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.ScssphpFilter.html">ScssphpFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.BaseProcessFilter.html">BaseProcessFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.UglifyJsFilter.html">UglifyJsFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.JSqueezeFilter.html">JSqueezeFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.CssImportFilter.html">CssImportFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.JpegtranFilter.html">JpegtranFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.PackerFilter.html">PackerFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.BaseCssFilter.html">BaseCssFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.CoffeeScriptFilter.html">CoffeeScriptFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.CssEmbedFilter.html">CssEmbedFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.CompassFilter.html">CompassFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.LessphpFilter.html">LessphpFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.SprocketsFilter.html">SprocketsFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.HandlebarsFilter.html">HandlebarsFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.GssFilter.html">GssFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.LessFilter.html">LessFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Filter.BaseNodeFilter.html">BaseNodeFilter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1138764494"></a>
+                                <a href="../namespaces/Assetic.Extension.html" style="margin-left: 30px; padding-left: 0">Extension</a>
+            </div>
+            <div id="namespace-1138764494" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-180347941"></a>
+                                <a href="../namespaces/Assetic.Extension.Twig.html" style="margin-left: 30px; padding-left: 0">Twig</a>
+            </div>
+            <div id="namespace-180347941" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.AsseticFilterFunction.html">AsseticFilterFunction</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.AsseticTokenParser.html">AsseticTokenParser</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.AsseticExtension.html">AsseticExtension</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.TwigResource.html">TwigResource</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.ValueContainer.html">ValueContainer</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.AsseticNode.html">AsseticNode</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.AsseticFilterInvoker.html">AsseticFilterInvoker</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Extension.Twig.TwigFormulaLoader.html">TwigFormulaLoader</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-750560727"></a>
+                                <a href="../namespaces/Assetic.Test.html" style="margin-left: 30px; padding-left: 0">Test</a>
+            </div>
+            <div id="namespace-750560727" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1026858904"></a>
+                                <a href="../namespaces/Assetic.Test.Util.html" style="margin-left: 30px; padding-left: 0">Util</a>
+            </div>
+            <div id="namespace-1026858904" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Util.CssUtilsTest.html">CssUtilsTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Util.VarUtilsTest.html">VarUtilsTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Util.TraversableStringTest.html">TraversableStringTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Util.LessUtilsTest.html">LessUtilsTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-709830705"></a>
+                                <a href="../namespaces/Assetic.Test.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-709830705" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Cache.ExpiringCacheTest.html">ExpiringCacheTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Cache.ConfigCacheTest.html">ConfigCacheTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Cache.FilesystemCacheTest.html">FilesystemCacheTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Cache.ArrayCacheTest.html">ArrayCacheTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Cache.ApcCacheTest.html">ApcCacheTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-108876774"></a>
+                                <a href="../namespaces/Assetic.Test.Factory.html" style="margin-left: 30px; padding-left: 0">Factory</a>
+            </div>
+            <div id="namespace-108876774" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1441955832"></a>
+                                <a href="../namespaces/Assetic.Test.Factory.Worker.html" style="margin-left: 30px; padding-left: 0">Worker</a>
+            </div>
+            <div id="namespace-1441955832" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Worker.CacheBustingWorkerTest.html">CacheBustingWorkerTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Worker.EnsureFilterWorkerTest.html">EnsureFilterWorkerTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-963583106"></a>
+                                <a href="../namespaces/Assetic.Test.Factory.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
+            </div>
+            <div id="namespace-963583106" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Resource.DirectoryResourceTest.html">DirectoryResourceTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Resource.FileResourceTest.html">FileResourceTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Resource.CoalescingDirectoryResourceTest.html">CoalescingDirectoryResourceTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1101144761"></a>
+                                <a href="../namespaces/Assetic.Test.Factory.Loader.html" style="margin-left: 30px; padding-left: 0">Loader</a>
+            </div>
+            <div id="namespace-1101144761" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Loader.CachedFormulaLoaderTest.html">CachedFormulaLoaderTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.Loader.FunctionCallsFormulaLoaderTest.html">FunctionCallsFormulaLoaderTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.AssetFactoryTest.html">AssetFactoryTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Factory.LazyAssetManagerTest.html">LazyAssetManagerTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1800327561"></a>
+                                <a href="../namespaces/Assetic.Test.Asset.html" style="margin-left: 30px; padding-left: 0">Asset</a>
+            </div>
+            <div id="namespace-1800327561" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.AssetCacheTest.html">AssetCacheTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.FileAssetTest.html">FileAssetTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.AssetCollectionTest.html">AssetCollectionTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.AssetReferenceTest.html">AssetReferenceTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.GlobAssetTest.html">GlobAssetTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.HttpAssetTest.html">HttpAssetTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Asset.StringAssetTest.html">StringAssetTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-679833849"></a>
+                                <a href="../namespaces/Assetic.Test.Filter.html" style="margin-left: 30px; padding-left: 0">Filter</a>
+            </div>
+            <div id="namespace-679833849" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-999663925"></a>
+                                <a href="../namespaces/Assetic.Test.Filter.Yui.html" style="margin-left: 30px; padding-left: 0">Yui</a>
+            </div>
+            <div id="namespace-999663925" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.Yui.BaseCompressorFilterTest.html">BaseCompressorFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.Yui.YuiCompressorFilterForTest.html">YuiCompressorFilterForTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.Yui.CssCompressorFilterTest.html">CssCompressorFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.Yui.JsCompressorFilterTest.html">JsCompressorFilterTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-862473637"></a>
+                                <a href="../namespaces/Assetic.Test.Filter.GoogleClosure.html" style="margin-left: 30px; padding-left: 0">GoogleClosure</a>
+            </div>
+            <div id="namespace-862473637" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.GoogleClosure.CompilerJarFilterTest.html">CompilerJarFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.GoogleClosure.CompilerApiFilterTest.html">CompilerApiFilterTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-310650245"></a>
+                                <a href="../namespaces/Assetic.Test.Filter.Sass.html" style="margin-left: 30px; padding-left: 0">Sass</a>
+            </div>
+            <div id="namespace-310650245" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.Sass.SassFilterTest.html">SassFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.Sass.ScssFilterTest.html">ScssFilterTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CssEmbedFilterTest.html">CssEmbedFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CoffeeScriptFilterTest.html">CoffeeScriptFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.LessFilterTest.html">LessFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.PhpCssEmbedFilterTest.html">PhpCssEmbedFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CompassFilterTest.html">CompassFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.PngoutFilterTest.html">PngoutFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.PackerFilterTest.html">PackerFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.UglifyCssFilterTest.html">UglifyCssFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.JSMinPlusFilterTest.html">JSMinPlusFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.ScssphpFilterTest.html">ScssphpFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.UglifyJsFilterTest.html">UglifyJsFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CssImportFilterTest.html">CssImportFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.TypeScriptFilterTest.html">TypeScriptFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.FilterCollectionTest.html">FilterCollectionTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.BaseProcessFilterTest.html">BaseProcessFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.BaseProcessFilterFilter.html">BaseProcessFilterFilter</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.JpegtranFilterTest.html">JpegtranFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.RooleFilterTest.html">RooleFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.HandlebarsFilterTest.html">HandlebarsFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.OptiPngFilterTest.html">OptiPngFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.GssFilterTest.html">GssFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.JSMinFilterTest.html">JSMinFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.StylusFilterTest.html">StylusFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.UglifyJs2FilterTest.html">UglifyJs2FilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.SprocketsFilterTest.html">SprocketsFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.PackagerFilterTest.html">PackagerFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CallablesFilterTest.html">CallablesFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CssRewriteFilterTest.html">CssRewriteFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.JSqueezeFilterTest.html">JSqueezeFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.JpegoptimFilterTest.html">JpegoptimFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.FilterTestCase.html">FilterTestCase</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.EmberPrecompileFilterTest.html">EmberPrecompileFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.CssMinFilterTest.html">CssMinFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.DartFilterTest.html">DartFilterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Filter.LessphpFilterTest.html">LessphpFilterTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-609324441"></a>
+                                <a href="../namespaces/Assetic.Test.Extension.html" style="margin-left: 30px; padding-left: 0">Extension</a>
+            </div>
+            <div id="namespace-609324441" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1804192383"></a>
+                                <a href="../namespaces/Assetic.Test.Extension.Twig.html" style="margin-left: 30px; padding-left: 0">Twig</a>
+            </div>
+            <div id="namespace-1804192383" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.Extension.Twig.TwigResourceTest.html">TwigResourceTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Extension.Twig.AsseticExtensionTest.html">AsseticExtensionTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.Extension.Twig.TwigFormulaLoaderTest.html">TwigFormulaLoaderTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Assetic.Test.AssetWriterTest.html">AssetWriterTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.FilterManagerTest.html">FilterManagerTest</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.Test.AssetManagerTest.html">AssetManagerTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Assetic.ValueSupplierInterface.html">ValueSupplierInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Assetic.AssetManager.html">AssetManager</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.FilterManager.html">FilterManager</a></li>
+                                                    <li class="class"><a href="../classes/Assetic.AssetWriter.html">AssetWriter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2140024745"></a>
+                                <a href="../namespaces/Slp.html" style="margin-left: 30px; padding-left: 0">Slp</a>
+            </div>
+            <div id="namespace-2140024745" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slp.Kernel.html">Kernel</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Controller.html">Controller</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Module.html">Module</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Router.html">Router</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Asset.html">Asset</a></li>
+                                                    <li class="class"><a href="../classes/Slp.View.html">View</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Container.html">Container</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Request.html">Request</a></li>
+                                                    <li class="class"><a href="../classes/Slp.Config.html">Config</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-865965922"></a>
+                                <a href="../namespaces/Mpe.html" style="margin-left: 30px; padding-left: 0">Mpe</a>
+            </div>
+            <div id="namespace-865965922" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-283896536"></a>
+                                <a href="../namespaces/Mpe.Demo.html" style="margin-left: 30px; padding-left: 0">Demo</a>
+            </div>
+            <div id="namespace-283896536" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1200228753"></a>
+                                <a href="../namespaces/Mpe.Demo.Helpers.html" style="margin-left: 30px; padding-left: 0">Helpers</a>
+            </div>
+            <div id="namespace-1200228753" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Mpe.Demo.Helpers.Test.html">Test</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1141787776"></a>
+                                <a href="../namespaces/Mpe.Demo.Controllers.html" style="margin-left: 30px; padding-left: 0">Controllers</a>
+            </div>
+            <div id="namespace-1141787776" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Mpe.Demo.Controllers.Hello.html">Hello</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Mpe.Demo.DemoModule.html">DemoModule</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Assetic.Test.Filter.GoogleClosure.html">\Assetic\Test\Filter\GoogleClosure</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Assetic\Test\Filter\GoogleClosure</small>CompilerApiFilterTest</h1>
+                    <p><em></em></p>
+                    
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Assetic.Test.Filter.GoogleClosure.CompilerApiFilterTest.html#method_testRoundTrip" class="">testRoundTrip()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/vendor.assetic.tests.Assetic.Test.Filter.GoogleClosure.CompilerApiFilterTest.php.html"><div class="path-wrapper">vendor/assetic/tests/Assetic/Test/Filter/GoogleClosure/CompilerApiFilterTest.php</div></a></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\PHPUnit_Framework_TestCase</div>
+                                                                                                    <div class="namespace-wrapper">\Assetic\Test\Filter\GoogleClosure\CompilerApiFilterTest</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                group
+                            </th>
+                            <td>
+                                                                    <p>integration</p>
+                                                                    <p>http</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                todo
+                            </th>
+                            <td>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testRoundTrip" name="method_testRoundTrip" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testRoundTrip()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testRoundTrip()</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">CompilerApiFilterTest.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/vendor/assetic/tests/Assetic/Test/Filter/GoogleClosure/CompilerApiFilterTest.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Munee.html">\Munee</a></li>
+                                                                            <li><a href="../namespaces/Assetic.html">\Assetic</a></li>
+                                                                            <li><a href="../namespaces/Slp.html">\Slp</a></li>
+                                                                            <li><a href="../namespaces/Mpe.html">\Mpe</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 8th, 2014 at 18:24.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
