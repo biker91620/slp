@@ -6,7 +6,13 @@ class Twig extends \Twig_Loader_Filesystem
 
 	public function getSource($name)
     {
-    	$paths = explode(":", $name);
+		return file_get_contents($this->findTemplate($name));
+		return $content;
+    }
+
+    protected function findTemplate($name)
+    {
+        $paths = explode(":", $name);
 		$count = count($paths);
 		$findCount = count(array_filter($paths, 'strlen')) ;
 		if ($findCount < 1 ||$findCount > 4)
@@ -30,17 +36,7 @@ class Twig extends \Twig_Loader_Filesystem
 		$this->addPath($tpl->directory);
 		if (!file_exists($tpl->file))
 			throw new \Exception("View not found");
-		$content = file_get_contents($tpl->file);
-		return $content;
+		return $tpl->file;
     }
 
-    public function getCacheKey($name)
-    {
-      return $name;
-    }
-
-    public function isFresh($name, $time)
-    {
-      return false;
-    }
 }

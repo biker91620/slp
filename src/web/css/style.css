@@ -1,0 +1,27 @@
+.message {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;	
+}
+
+.stack {
+	
+	border: 1px solid gray;
+	margin-top: 10px;
+}
+.debug {
+	margin: 50px;
+	font-weight: bold;
+}
+.debug .number {
+	color: #cfb8b8;
+}
+
+.debug .line {
+	color: grey;
+}
+
+.debug .call {
+	font-size: 15px;
+	color: grey;
+}

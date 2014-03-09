@@ -128,6 +128,6 @@ class Router
 				return true;
 			}
 		}
-		throw new \Exception("No route found for $uri");
+		throw new \Exception("No route or file found for $uri");
 	}
 }

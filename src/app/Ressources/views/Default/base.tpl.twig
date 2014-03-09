@@ -1,67 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <title>SLP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
-      <script src="../bower_components/respond/dest/respond.min.js"></script>
-    <![endif]-->
-    <script>
-
-     var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-
-    </script>
-    <style>
-    	.message {
-	    	text-align: center;
-	    	font-weight: bold;
-	    	font-size: 20px;	
-    	}
+    	<link rel="stylesheet" href="css/bootstrap.min.css">
+    	<link rel="stylesheet" href="css/style.css">
     	
-    	.stack {
-	    	
-    		border: 1px solid gray;
-    		margin-top: 10px;
-    	}
-    	.debug {
-    		margin: 50px;
-	    	font-weight: bold;
-    	}
-    	.debug .number {
-	    	color: #cfb8b8;
-    	}
+    	{% stylesheets 'css/style.css'  output='compiled/css/all.css' %} 
+    		<link rel="stylesheet" href="{{asset_url}}">
+    	{% endstylesheets %}
     	
-    	.debug .line {
-	    	color: grey;
-    	}
     	
-    	.debug .call {
-    		font-size: 15px;
-	    	color: grey;
-    	}
-    </style>
+    	<script src="js/jquery-1.11.0.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+    	
+    	{% javascripts 'js/*'  output='compiled/js/all.js' %}
+		    <script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
   </head>
   <body>
    
@@ -79,12 +35,17 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="/doc" id="themes">Documentation <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-              </ul>
+              <a class="dropdown-toggle" href="/doc" id="themes">Documentation </a>
+          
             </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Download <span class="caret"></span></a>
+              
+	               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				    <li role="presentation"><a role="menuitem" tabindex="-1" href="/slp-source.tar.gz">Source</a></li>
+				    <li role="presentation"><a role="menuitem" tabindex="-1" href="/slp-docs.tar.gz">Docs</a></li>
+				  </ul>
+              
             </li>
           </ul>
 
@@ -102,6 +63,7 @@
             <p class="lead">A friendly light php framework</p>
           </div>
         </div>
+        	<div>Remote: {{container.get('request').remote}}</div>
         	{% block content %}
         		Content
         	{% endblock %}
@@ -133,10 +95,5 @@
 
 
     </div>
-
-
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootswatch.js"></script>
   </body>
 </html>
